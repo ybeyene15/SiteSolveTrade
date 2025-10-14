@@ -179,7 +179,7 @@ export default function Pricing() {
                   <div>
                     <h4 className="text-white font-semibold mb-2">How long does it take?</h4>
                     <p className="text-gray-400">
-                      Typically 2-3 weeks from project kickoff to delivery, depending on your feedback and content availability.
+                      Typically 1-2 weeks from project kickoff to delivery, depending on your feedback and content availability.
                     </p>
                   </div>
                 </div>
