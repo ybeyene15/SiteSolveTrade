@@ -44,18 +44,13 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signIn = async (email: string, password: string) => {
-    console.log('AdminAuthProvider: Starting sign in');
     setLoading(true);
     const { error, isAdmin: adminStatus } = await adminAuth.signIn(email, password);
-    console.log('AdminAuthProvider: Sign in completed', { error, adminStatus });
 
     if (!error && adminStatus) {
       const { user: currentUser } = await adminAuth.getCurrentAdmin();
-      console.log('AdminAuthProvider: Setting admin user', currentUser?.email);
       setUser(currentUser);
       setIsAdmin(true);
-    } else if (error) {
-      console.log('AdminAuthProvider: Sign in failed', error.message);
     }
 
     setLoading(false);

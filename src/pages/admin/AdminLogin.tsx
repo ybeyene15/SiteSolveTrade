@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '../../components/admin/AdminAuthProvider';
 import { Shield, AlertCircle } from 'lucide-react';
@@ -10,8 +10,14 @@ export default function AdminLogin() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { signIn } = useAdminAuth();
+  const { signIn, isAdmin, user } = useAdminAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAdmin && user && !loading) {
+      navigate('/admin', { replace: true });
+    }
+  }, [isAdmin, user, loading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,20 +25,13 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
-      console.log('Attempting sign in...');
       const { error } = await signIn(email, password);
-      console.log('Sign in result:', { error });
 
       if (error) {
-        console.error('Login error:', error);
         setError(error.message);
         setLoading(false);
-      } else {
-        console.log('Login successful, navigating to /admin');
-        navigate('/admin');
       }
     } catch (err) {
-      console.error('Unexpected error:', err);
       setError('An unexpected error occurred. Please try again.');
       setLoading(false);
     }
