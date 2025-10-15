@@ -19,15 +19,20 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
+      console.log('Attempting sign in...');
       const { error } = await signIn(email, password);
+      console.log('Sign in result:', { error });
 
       if (error) {
+        console.error('Login error:', error);
         setError(error.message);
         setLoading(false);
       } else {
+        console.log('Login successful, navigating to /admin');
         navigate('/admin');
       }
     } catch (err) {
+      console.error('Unexpected error:', err);
       setError('An unexpected error occurred. Please try again.');
       setLoading(false);
     }

@@ -9,22 +9,28 @@ export interface AdminAuthState {
 
 export const adminAuth = {
   async signIn(email: string, password: string) {
+    console.log('adminAuth.signIn: Attempting Supabase sign in');
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password
     })
 
     if (error) {
+      console.error('adminAuth.signIn: Supabase error', error);
       return { data: null, error, isAdmin: false }
     }
 
     if (!data.user) {
+      console.error('adminAuth.signIn: No user returned');
       return { data: null, error: new Error('No user returned'), isAdmin: false }
     }
 
+    console.log('adminAuth.signIn: User authenticated, checking admin status');
     const isAdmin = await this.checkIsAdmin(data.user.id)
+    console.log('adminAuth.signIn: Is admin?', isAdmin);
 
     if (!isAdmin) {
+      console.log('adminAuth.signIn: Not an admin, signing out');
       await supabase.auth.signOut()
       return {
         data: null,
@@ -33,6 +39,7 @@ export const adminAuth = {
       }
     }
 
+    console.log('adminAuth.signIn: Success!');
     return { data, error: null, isAdmin: true }
   },
 
