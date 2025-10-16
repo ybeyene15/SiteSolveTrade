@@ -91,7 +91,7 @@ export default function TermsOfService() {
                     Delivery Timeline
                   </h2>
                   <ul className="text-gray-300 space-y-3 leading-relaxed list-disc list-inside ml-4">
-                    <li>Standard delivery is within 1-3 business days from payment and receipt of all required content.</li>
+                    <li>Standard delivery is within 1-2 weeks from payment and receipt of all required content.</li>
                     <li>Delays caused by missing content or client feedback may extend the timeline.</li>
                   </ul>
                 </section>
