@@ -138,7 +138,7 @@ export default function CheckoutConfirmation() {
                   <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-lg p-4">
                     <Clock className="w-6 h-6 text-cyan-400 mb-2" />
                     <h4 className="text-white font-semibold text-sm mb-1">Quick Delivery</h4>
-                    <p className="text-gray-400 text-xs">1-2 weeks turnaround</p>
+                    <p className="text-gray-400 text-xs">2-3 weeks turnaround</p>
                   </div>
                   <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-lg p-4">
                     <Check className="w-6 h-6 text-cyan-400 mb-2" />
@@ -237,7 +237,7 @@ export default function CheckoutConfirmation() {
                   </div>
                   <div>
                     <h4 className="text-white font-semibold mb-1">Development & Delivery</h4>
-                    <p className="text-gray-400 text-sm">Your custom website delivered in 1-2 weeks, ready to launch</p>
+                    <p className="text-gray-400 text-sm">Your custom website delivered in 2-3 weeks, ready to launch</p>
                   </div>
                 </div>
               </div>

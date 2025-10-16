@@ -17,12 +17,6 @@ import CheckoutConfirmation from './pages/CheckoutConfirmation';
 import { AuthProvider } from './components/auth/AuthProvider';
 import { PaymentGate } from './components/auth/PaymentGate';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
-import { AdminAuthProvider } from './components/admin/AdminAuthProvider';
-import { AdminRoute } from './components/admin/AdminRoute';
-import AdminLogin from './pages/admin/AdminLogin';
-import AdminDashboard from './pages/admin/AdminDashboard';
-import HeroEditor from './pages/admin/HeroEditor';
-import ServicesEditor from './pages/admin/ServicesEditor';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -37,12 +31,11 @@ function ScrollToTop() {
 function AppContent() {
   const [quoteFormTrigger, setQuoteFormTrigger] = useState<(() => void) | null>(null);
   const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
     <div className="min-h-screen bg-black">
       <ScrollToTop />
-      {!isAdminRoute && <Navbar onGetQuote={location.pathname === '/' ? quoteFormTrigger : null} />}
+      <Navbar onGetQuote={location.pathname === '/' ? quoteFormTrigger : null} />
       <Routes>
         <Route path="/" element={<Home setQuoteFormTrigger={setQuoteFormTrigger} />} />
         <Route path="/pricing" element={<Pricing />} />
@@ -55,15 +48,9 @@ function AppContent() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/cookie-settings" element={<CookieSettings />} />
-
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
-        <Route path="/admin/hero" element={<AdminRoute><HeroEditor /></AdminRoute>} />
-        <Route path="/admin/services" element={<AdminRoute><ServicesEditor /></AdminRoute>} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {!isAdminRoute && <Footer />}
+      <Footer />
     </div>
   );
 }
@@ -72,9 +59,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <AdminAuthProvider>
-          <AppContent />
-        </AdminAuthProvider>
+        <AppContent />
       </AuthProvider>
     </Router>
   );

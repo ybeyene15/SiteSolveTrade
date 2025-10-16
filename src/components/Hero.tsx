@@ -1,43 +1,10 @@
-import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 
 interface HeroProps {
   onGetQuote: () => void;
 }
 
-interface HeroContent {
-  main_headline: string;
-  sub_headline: string;
-  badge_text: string;
-  primary_button_text: string;
-  secondary_button_text: string;
-}
-
 export default function Hero({ onGetQuote }: HeroProps) {
-  const [content, setContent] = useState<HeroContent>({
-    main_headline: 'Next-gen digital infrastructure for visionary companies',
-    sub_headline: 'Advanced web systems engineered for performance, scale, and innovation',
-    badge_text: 'Start Here',
-    primary_button_text: 'Get Quote',
-    secondary_button_text: 'Learn More'
-  });
-
-  useEffect(() => {
-    const loadContent = async () => {
-      const { data } = await supabase
-        .from('hero_section')
-        .select('*')
-        .eq('is_published', true)
-        .maybeSingle();
-
-      if (data) {
-        setContent(data);
-      }
-    };
-
-    loadContent();
-  }, []);
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black pt-20">
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/20 via-black to-blue-950/20"></div>
@@ -50,27 +17,29 @@ export default function Hero({ onGetQuote }: HeroProps) {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-6 inline-block px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full">
-            <span className="text-cyan-400 text-sm font-semibold tracking-wide">{content.badge_text}</span>
+            <span className="text-cyan-400 text-sm font-semibold tracking-wide">Start Here</span>
           </div>
 
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight whitespace-pre-line">
-            {content.main_headline}
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+            <span className="text-blue-500">Next-gen</span> digital<br />
+            infrastructure for<br />
+            visionary companies
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-            {content.sub_headline}
+            <span className="text-sky-400 font-bold">Advanced</span> web systems engineered for performance, scale, and innovation
           </p>
 
           <div className="flex flex-wrap gap-6 justify-center">
             <button onClick={onGetQuote} className="group px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-cyan-400 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20 flex items-center gap-2">
-              {content.primary_button_text}
+              Get Quote
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
             <button
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 bg-transparent border-2 border-white/20 text-white font-semibold rounded-lg hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
             >
-              {content.secondary_button_text}
+              Learn More
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>
