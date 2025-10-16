@@ -16,7 +16,11 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-6">
+            <Link
+              to="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center gap-2 mb-6"
+            >
               <Zap className="w-6 h-6 text-cyan-400" />
               <span className="text-xl font-bold text-white">SiteSolve</span>
             </Link>
