@@ -157,11 +157,23 @@ export default function CheckoutConfirmation() {
                     />
                     <span className="text-gray-300 text-sm leading-relaxed">
                       I agree to the{' '}
-                      <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 underline">
+                      <a
+                        href="/terms-of-service"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-cyan-400 hover:text-cyan-300 underline"
+                      >
                         Terms of Service
                       </a>{' '}
                       and{' '}
-                      <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 underline">
+                      <a
+                        href="/privacy-policy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-cyan-400 hover:text-cyan-300 underline"
+                      >
                         Privacy Policy
                       </a>
                       . I understand that this is a one-time payment for custom website development services.
