@@ -98,7 +98,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/5">
           <p className="text-gray-400 text-center">
-            © 2025 Site Solver. Digital solutions crafted with precision.
+            © 2025 Site Solve. Digital solutions crafted with precision.
           </p>
         </div>
       </div>
