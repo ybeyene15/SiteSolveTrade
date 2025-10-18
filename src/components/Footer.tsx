@@ -33,7 +33,7 @@ export default function Footer() {
 
               <div>
                 <h4 className="text-white font-semibold mb-2">Contact</h4>
-                <p className="text-gray-400">703-887-9122</p>
+                <p className="text-gray-400">+1 (703) 887-9122</p>
                 <p className="text-gray-400">sitsolvesolutions@gmail.com</p>
               </div>
             </div>
