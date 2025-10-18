@@ -6,7 +6,7 @@ interface HeroProps {
 
 export default function Hero({ onGetQuote }: HeroProps) {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black pt-20">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black pt-20 md:pt-20 -mt-16 md:mt-0">
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/20 via-black to-blue-950/20"></div>
 
       <div className="absolute inset-0 opacity-20">
