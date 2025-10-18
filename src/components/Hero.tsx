@@ -20,9 +20,9 @@ export default function Hero({ onGetQuote }: HeroProps) {
             <span className="text-cyan-400 text-sm font-semibold tracking-wide">Start Here</span>
           </div>
 
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
             <span className="text-blue-500">Next-gen</span> digital<br />
-            infrastructure for<br />
+            <span className="inline-block">infrastructure</span> for<br />
             visionary companies
           </h1>
 
